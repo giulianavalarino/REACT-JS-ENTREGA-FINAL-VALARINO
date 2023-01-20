@@ -1,34 +1,24 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Button from './components/button/button';
 import Sidebar from './components/sidebar/sidebar';
+import Navbar from './components/navbar/navbar';
+import { ItemList } from './components/itemList/itemList';
+import { Router } from './Router/router';
 
 function App() {
   const [isOpen, setOpen] = useState(false);
-  const onHandlerClick = () => {
+  const onHandlerCart = () => {
     setOpen(!isOpen);
   }
   return (
-    <div className="App">
-      <Sidebar onClose={onHandlerClick} isOpen={isOpen}>
+    <div className="container">
+      <Sidebar onClose={onHandlerCart} isOpen={isOpen}>
         <h2>Item</h2>
       </Sidebar>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button text='Click me' onHandlerClick={onHandlerClick}/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar numbersOfItems={0} onHandlerCart={onHandlerCart}/>
+      <Router></Router>
+  
     </div>
   );
 }
