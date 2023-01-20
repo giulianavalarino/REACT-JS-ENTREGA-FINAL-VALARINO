@@ -3,6 +3,9 @@ import { ItemList } from "../components/itemList/itemList";
 import { useEffect, useState } from "react";
 import { consultaApi, API_Endpoints, API_Verbos } from "../services/ApiServices";
 import { ItemDetalles } from "../components/itemDetalles/itemDetalles";
+import { Home } from "../pages";
+import Cart from "../pages/cart/cart";
+
 
 export const Router = () => {
 
@@ -17,7 +20,9 @@ export const Router = () => {
     return (
         <div className="">
             <Routes>
-                <Route path="*" element={<Navigate to={"/itemList"}/>} />
+                <Route path="/" element={<Home/>}/>
+                <Route path="/Home" element={<Home/>}/>
+                <Route path="/Cart" element={<Cart/>}/>
                 <Route path="/itemList" element={<ItemList arregloItems={arregloItems}/>}/>
                 <Route path="/Remeras" element={<ItemList arregloItems={arregloItems.filter((item) => item.categoria == true)}/>} />
                 <Route path="/Vestidos" element={<ItemList arregloItems={arregloItems.filter((item) => item.categoria == false)}/>} />
@@ -28,3 +33,6 @@ export const Router = () => {
         </div>
     );
 };
+
+
+

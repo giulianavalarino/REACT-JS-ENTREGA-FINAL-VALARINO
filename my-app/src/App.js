@@ -5,22 +5,25 @@ import Sidebar from './components/sidebar/sidebar';
 import Navbar from './components/navbar/navbar';
 import { ItemList } from './components/itemList/itemList';
 import { Router } from './Router/router';
+import { Home } from './pages';
+import {Routes, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function App() {
+const App = () => {
   const [isOpen, setOpen] = useState(false);
   const onHandlerCart = () => {
     setOpen(!isOpen);
   }
-  return (
-    <div className="container">
+  return(
+    <div className='container'>
       <Sidebar onClose={onHandlerCart} isOpen={isOpen}>
-        <h2>Item</h2>
+        <Link to='/Cart'>Go to cart</Link>
       </Sidebar>
       <Navbar numbersOfItems={0} onHandlerCart={onHandlerCart}/>
-      <Router></Router>
-  
+      <Router/>
     </div>
-  );
+  )
+
 }
 
 export default App;
